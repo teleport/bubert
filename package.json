@@ -1,0 +1,53 @@
+{
+  "name": "telebot",
+  "version": "0.1.0",
+  "private": true,
+  "author": "Mihkel Sokk <mihkel@teleport.org>",
+  "description": "Botting away at Teleport",
+  "dependencies": {
+    "hubot": "^2.16.0",
+    "hubot-brain-inspect": "0.0.1",
+    "hubot-diagnostics": "0.0.1",
+    "hubot-fleep": "^0.7.1",
+    "hubot-google-images": "^0.2.2",
+    "hubot-google-translate": "^0.2.0",
+    "hubot-help": "^0.1.1",
+    "hubot-heroku-keepalive": "^1.0.0",
+    "hubot-maps": "0.0.2",
+    "hubot-pugme": "^0.1.0",
+    "hubot-redis-brain": "0.0.3",
+    "hubot-rules": "^0.1.1",
+    "hubot-scripts": "^2.16.2",
+    "hubot-shipit": "^0.2.0",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.6.0",
+    "eslint-config-airbnb": "^0.1.0"
+  },
+  "eslintConfig": {
+    "extends": "airbnb/base",
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "rules": {
+      "default-case": 0,
+      "guard-for-in": 0,
+      "strict": 0,
+      "id-length": [
+        2,
+        {
+          "min": 2,
+          "properties": "never",
+          "exceptions": [
+            "e",
+            "_"
+          ]
+        }
+      ]
+    }
+  }
+}
