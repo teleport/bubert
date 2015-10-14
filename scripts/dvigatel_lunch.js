@@ -15,6 +15,7 @@
 
 const moment = require('moment');
 const _ = require('lodash');
+const HubotCron = require('hubot-cronjob');
 
 const API_ROOT = 'http://www.sodexo.fi/en/ruokalistat/output/daily_json/7576';
 const TEXT = {
@@ -34,6 +35,17 @@ class DvigatelLunch {
   constructor(robot) {
     this.robot = robot;
     this.robot.hear(/\/lunch\s*([a-z]{2})?$/i, res => this.respond(res));
+
+    const FLEEP_ROOM = process.env.LUNCH_CRON_FLEEP_ROOM;
+    if (!FLEEP_ROOM) return;
+
+    new HubotCron(process.env.LUNCH_CRON_PATTERN, process.env.LUNCH_CRON_TZ, () => {
+      this.fetchData()
+        .then(categories => this.formatResponse(categories, 'et'))
+        .then(text => {
+          robot.messageRoom(FLEEP_ROOM, text);
+        }).catch(err => console.error(err));
+    });
   }
 
 
@@ -42,7 +54,6 @@ class DvigatelLunch {
     if (lang !== 'en' && lang !== 'et') return res.send('I don\'t speak that language.');
 
     this.fetchData()
-      .then((json) => _.groupBy(json.courses, 'category'))
       .then(categories => this.formatResponse(categories, lang))
       .then(text => {
         res.send(text);
@@ -99,7 +110,7 @@ class DvigatelLunch {
         if (err) return reject(err);
         resolve(JSON.parse(body));
       });
-    });
+    }).then((json) => _.groupBy(json.courses, 'category'));
   }
 }
 
