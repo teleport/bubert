@@ -1,0 +1,16 @@
+redis:
+  image: convox/redis
+  environment:
+    - REDIS_PASSWORD
+
+hubot:
+  build: .
+  links:
+    - redis
+  ports:
+    - 80:3000
+  environment:
+    - HUBOT_FLEEP_EMAIL
+    - HUBOT_FLEEP_PASSWORD
+    - HUBOT_LOG_LEVEL
+    - HUBOT_FLEEP_MARK_SEEN
