@@ -6,4 +6,4 @@ Bubert is a chat bot built on the [Hubot][hubot] framework.
 
 ### Running it Locally
 
-`docket-compose up`
+`docker-compose up`

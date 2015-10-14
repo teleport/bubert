@@ -2,7 +2,6 @@
 
 set -e
 
-npm install
 export PATH="node_modules/.bin:node_modules/hubot/node_modules/.bin:$PATH"
 export REDIS_URL="redis://u:${REDIS_ENV_REDIS_PASSWORD}@${REDIS_PORT_6379_TCP_ADDR}:${REDIS_PORT_6379_TCP_PORT}/0"
 
