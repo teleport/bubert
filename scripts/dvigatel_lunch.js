@@ -36,15 +36,24 @@ class DvigatelLunch {
     this.robot = robot;
     this.robot.hear(/\/lunch\s*([a-z]{2})?$/i, res => this.respond(res));
 
+    this.robot.on('wit.Lunch', (res, outcome) => {
+      if (outcome.confidence <= 0.5) return;
+
+      this.fetchData()
+        .then(categories => this.formatResponse(categories, 'et'))
+        .then(text => res.send(text))
+        .catch(err => console.error(err));
+      res.send(res.random(['Hi!', 'Hello!', 'Howdy!']));
+    });
+
     const FLEEP_ROOM = process.env.LUNCH_CRON_FLEEP_ROOM;
     if (!FLEEP_ROOM) return;
 
     new HubotCron(process.env.LUNCH_CRON_PATTERN, process.env.LUNCH_CRON_TZ, () => {
       this.fetchData()
         .then(categories => this.formatResponse(categories, 'et'))
-        .then(text => {
-          robot.messageRoom(FLEEP_ROOM, text);
-        }).catch(err => console.error(err));
+        .then(text => robot.messageRoom(FLEEP_ROOM, text))
+        .catch(err => console.error(err));
     });
   }
 
@@ -55,9 +64,8 @@ class DvigatelLunch {
 
     this.fetchData()
       .then(categories => this.formatResponse(categories, lang))
-      .then(text => {
-        res.send(text);
-      }).catch(err => console.error(err));
+      .then(text => res.send(text))
+      .catch(err => console.error(err));
   }
 
 
