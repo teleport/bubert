@@ -43,7 +43,6 @@ class DvigatelLunch {
         .then(categories => this.formatResponse(categories, 'et'))
         .then(text => res.send(text))
         .catch(err => console.error(err));
-      res.send(res.random(['Hi!', 'Hello!', 'Howdy!']));
     });
 
     const FLEEP_ROOM = process.env.LUNCH_CRON_FLEEP_ROOM;
