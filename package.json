@@ -7,14 +7,16 @@
   "dependencies": {
     "hubot": "^2.16.0",
     "hubot-brain-inspect": "0.0.1",
+    "hubot-business-cat": "^1.2.5",
     "hubot-cronjob": "^0.2.1",
     "hubot-diagnostics": "0.0.1",
+    "hubot-firebase-brain": "^1.0.1",
     "hubot-fleep": "^0.7.1",
     "hubot-help": "^0.1.1",
     "hubot-pugme": "^0.1.0",
-    "hubot-redis-brain": "0.0.3",
     "hubot-rules": "^0.1.1",
     "hubot-shipit": "^0.2.0",
+    "hubot-thank-you": "0.0.3",
     "lodash": "^3.10.1",
     "moment": "^2.10.6"
   },

@@ -2,8 +2,10 @@
   "hubot-diagnostics",
   "hubot-help",
   "hubot-pugme",
-  "hubot-redis-brain",
   "hubot-brain-inspect",
   "hubot-rules",
-  "hubot-shipit"
+  "hubot-shipit",
+  "hubot-business-cat",
+  "hubot-thank-you",
+  "hubot-firebase-brain"
 ]
