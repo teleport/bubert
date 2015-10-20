@@ -7,9 +7,20 @@ class WitAi {
     this.robot = robot;
     this.robot.hear(/.+$/i, res => this.respond(res));
 
+    /**
+     * Bubert says hello to everybody.
+     */
     this.robot.on('wit.Hello', (res, outcome) => {
-      if (outcome.confidence <= 0.5) return;
+      if (outcome.confidence <= 0.55) return;
       res.send(res.random(['Hi!', 'Hello!', 'Howdy!']));
+    });
+
+    /**
+     * Bubert, you silly goose!
+     */
+    this.robot.on('wit.Yesman', (res, outcome) => {
+      if (outcome.confidence <= 0.55) return;
+      res.send(res.random(['Absolutely!', 'Yes', 'Okay', 'Fine', 'Aye', 'Yea', 'Yep', 'Yup', 'Affirmative', 'Yes']));
     });
   }
 
