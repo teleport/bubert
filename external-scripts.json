@@ -2,6 +2,7 @@
   "hubot-diagnostics",
   "hubot-help",
   "hubot-pugme",
+  "hubot-google-images",
   "hubot-brain-inspect",
   "hubot-rules",
   "hubot-shipit",
